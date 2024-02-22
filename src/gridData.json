@@ -1,0 +1,81 @@
+[
+    {
+      "FARMER.OBJECT_ID": 15261,
+      "FARMER.STATUS": "VALID",
+      "FARMER.FIC": "00005355361",
+      "FARMER.TAX_NO": "4001006108092",
+      "FARMER.FULL_NAME": " ДПТУ ЕКО-АГРО Б.К.Б. ДООЕЛ",
+      "FARMER.SURNAME": "КАШИРСКИ",
+      "FARMER.FNAME": "ЗВОНКО",
+      "FARMER.GENDER": "M",
+      "FARMER.DT_BIRTH": "1962-09-19T00:00:00.000+01:00",
+      "FARMER.FARM_ADDRESS": "БЕРОВО МИРЧЕ АЦЕВ БР 15",
+      "FARMER.FARM_MUNIC": "БЕРОВО",
+      "FARMER.PHONE": "076-362-115",
+      "FARMER.MAIL": "eko.agro.bkb@gmail.com"
+    },
+    {
+      "FARMER.OBJECT_ID": 21657,
+      "FARMER.STATUS": "CLOSED",
+      "FARMER.FIC": "00006327976",
+      "FARMER.TAX_NO": "4001015504413",
+      "FARMER.FULL_NAME": "ДПТУ МИЛКИ ФАРМ МИШЕЛ ДООЕЛ",
+      "FARMER.SURNAME": "ПАНКОВСКИ",
+      "FARMER.FNAME": "МИШЕЛ ",
+      "FARMER.GENDER": "M",
+      "FARMER.DT_BIRTH": "1988-03-24T00:00:00.000+01:00",
+      "FARMER.FARM_ADDRESS": "БЕРОВО МАРШАЛ ТИТО БР:170/б",
+      "FARMER.FARM_MUNIC": "БЕРОВО",
+      "FARMER.PHONE": "078-334-365",
+      "FARMER.MAIL": "milkifarmmisel@hotmail.com"
+    },
+    {
+      "FARMER.OBJECT_ID": 23465,
+      "FARMER.STATUS": "VALID",
+      "FARMER.FIC": "00006311226",
+      "FARMER.TAX_NO": "4001014504185",
+      "FARMER.FULL_NAME": "ГРБАВЕЦ ДООЕЛ С. МИТРАШИНЦИ",
+      "FARMER.SURNAME": "ТРКАЛЕВСКИ",
+      "FARMER.FNAME": "МИХАИЛ",
+      "FARMER.GENDER": "M",
+      "FARMER.DT_BIRTH": "1986-06-12T00:00:00.000+02:00",
+      "FARMER.FARM_ADDRESS": "МИТРАШИНЦИ БЕЗУЛИЧЕН СОСТЕМ ББ",
+      "FARMER.FARM_MUNIC": "БЕРОВО",
+      "FARMER.PHONE": "078-424-086",
+      "FARMER.MAIL": "grbavecdooel@gmail.com"
+    },
+    {
+      "FARMER.OBJECT_ID": 28336,
+      "FARMER.STATUS": "CLOSED",
+      "FARMER.FIC": "00006347851",
+      "FARMER.TAX_NO": "4001015504367",
+      "FARMER.FULL_NAME": ",,ЗЛАТНО ЈАГНЕ,, ДООЕЛ",
+      "FARMER.SURNAME": "ЧИНДАРОВСКА",
+      "FARMER.FNAME": "ЏАНИН",
+      "FARMER.GENDER": "F",
+      "FARMER.DT_BIRTH": "1989-07-26T00:00:00.000+02:00",
+      "FARMER.FARM_ADDRESS": "БЕРОВО 23 - ТИ АВГУСТ БР.42",
+      "FARMER.FARM_MUNIC": "БЕРОВО",
+      "FARMER.PHONE": "070-859-157"
+    },
+    {
+      "FARMER.OBJECT_ID": 31556,
+      "FARMER.STATUS": "VALID",
+      "FARMER.FIC": "00005715754",
+      "FARMER.ID_NO": "6082688",
+      "FARMER.TAX_NO": "4001006107630",
+      "FARMER.FULL_NAME": "ДТПУ ЏО - АНИ КОМЕРЦ ДООЕЛ",
+      "FARMER.SURNAME": "БУРОВСКА",
+      "FARMER.FNAME": "СОФИЈА",
+      "FARMER.GENDER": "F",
+      "FARMER.DT_BIRTH": "1975-05-21T00:00:00.000+01:00",
+      "FARMER.FARM_ADDRESS": "РУСИНОВО",
+      "FARMER.FARM_MUNIC": "БЕРОВО",
+      "FARMER.PHONE": "070-889-239",
+      "FARMER.MAIL": "sburovska@gmail.com"
+    }
+    
+  ]
+
+
+  

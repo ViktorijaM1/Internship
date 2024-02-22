@@ -1,0 +1,41 @@
+[
+    {
+      "key": "status",
+      "name": "Статус"
+    },
+    {
+      "key": "idbr",
+      "name": "ИДБР"
+    },
+    {
+      "key": "tax_no",
+      "name": "Даночен број"
+    },
+    {
+      "key": "full_name",
+      "name": "Целосно име"
+    },
+    {
+      "key": "surname",
+      "name": "Презиме"
+    },
+    {
+      "key": "fname",
+      "name": "Име"
+    },
+    {
+      "key": "dt_birth",
+      "name": "Датум на раѓање"
+    },
+    {
+      "key": "farm_address",
+      "name": "Адреса"
+    },
+    {
+      "key": "farm_munic",
+      "name": "Општина"
+    }
+  ]
+
+
+  

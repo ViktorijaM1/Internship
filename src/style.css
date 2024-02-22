@@ -1,0 +1,11 @@
+#root {
+  
+    display: grid;
+    width: 100vw; /* Use the full viewport width */
+    height: auto;
+    grid-template-columns: 33% 33%;
+    grid-column-gap: 30px;
+    align-items: center; /* Align items vertically */
+}
+
+
