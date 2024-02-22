@@ -3,31 +3,20 @@ import React from 'react';
 import validator from '@rjsf/validator-ajv8';
 import Swal from 'sweetalert2';
 import './style.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { useState, useRef } from 'react';
 
-const formStyles = {
-  position: 'fixed',
-  top: '200px',
-  left:'250px',
-  width: '50%',
-  padding: '20px',
-};
-const button = {
-  position: 'relative',
-  margin: '40px auto',
-  left: '600px'
-}
-const picture = {
-  position: 'relative',
-  width:'500px',
-  top: '30px',
-  left:'1400px'
-  
-}
 
-export default function FormComponent({ selectedRow }) { 
+export default function FormComponent({ selectedRow }) {
+
+  const [imagePreview, setImagePreview] = useState(null);
+  const [imageSize, setImageSize] = useState(null);
+  const [selectedFileName, setSelectedFileName] = useState(null);
+  const [close, setClose] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [fullName, setFullName] = useState('');
+  const fileInputRef = useRef(null);
+
   let schema = {
     type: 'object',
     properties: {
@@ -46,26 +35,6 @@ export default function FormComponent({ selectedRow }) {
     }
   };
 
-  if (selectedRow.row.status === 'VALID') {
-    schema = {
-      ...schema,
-      properties: {
-        ...schema.properties,
-        ...Object.fromEntries(Object.entries(schema.properties).map(([key, value]) => [key, { ...value, default: selectedRow.row[key] }]))
-      }
-    };
-  }
-
-  if (selectedRow.row.status === 'CLOSED') {
-    schema = {
-      ...schema,
-      properties: {
-        ...schema.properties,
-        ...Object.fromEntries(Object.entries(schema.properties).map(([key, value]) => [key, { ...value, default: selectedRow.row[key] }]))
-      }
-    };
-  }
-
   const handleSubmit = () => {
 
     Swal.fire({
@@ -76,114 +45,89 @@ export default function FormComponent({ selectedRow }) {
     });
   };
 
-  const uiSchema = {
-    'ui:column': 'right'
+  const handleClose = () => {
+    setClose(true);
+    setImagePreview(false);
+    setImageSize(false);
+    setSelectedFileName(false);
+    setFullName('');
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
   };
 
+  const handleSelectedFile = (e) => {
+    const file = e.target.files[0];
+    setSelectedFile(file);
 
-  if (selectedRow.row.status === 'VALID') {
-    const [imagePreview, setImagePreview] = useState(null);
-    const [imageSize, setImageSize] = useState(null);
-    const [selectedFileName, setSelectedFileName] = useState(null);
-    const [close, setClose] = useState(false);
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [fullName, setFullName] = useState('')
-    const fileInputRef = useRef(null)
+    if (!file.type.startsWith('image/')) {
+      Swal.fire({
+        title: 'Invalid File Type!',
+        text: 'Please select an image file.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      })
 
-    const handleClose = () => {
-      setClose(true);
-      setImagePreview(false);
-      setImageSize(false);
-      setSelectedFileName(false);
-      setFullName('');
       if (fileInputRef.current) {
         fileInputRef.current.value = '';
       }
-    };
-
-    const handleSelectedFile = (e) => {
-      const file = e.target.files[0];
-      setSelectedFile(file);
-
-      if (!file.type.startsWith('image/')) {
-        Swal.fire({
-          title: 'Invalid File Type!',
-          text: 'Please select an image file.',
-          icon: 'error',
-          confirmButtonText: 'OK'
-        })
-
-        if (fileInputRef.current) {
-          fileInputRef.current.value = ''; 
-        }
-        return;
-      }
-      setSelectedFileName(file.name);
-      const reader = new FileReader();
-      reader.onload = () => {
-        setImagePreview(reader.result);
-        setImageSize(file.size / 1024);
-      };
-      reader.readAsDataURL(file);
-      setFullName(`${selectedRow.row.fname} ${selectedRow.row.surname}`);
+      return;
     }
-    return (
-      <>
-        <div style={picture}>
-          <label>Choose a picture:</label> <br></br>
-          <input type="file" ref={fileInputRef} id="picture" name="picture" onChange={(e) => handleSelectedFile(e)} />
-          <br></br>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#example">
-            Submit
-          </button>
-          <div class="modal" id="example" >
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Image Preview</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
-                </div>
-                <div class="modal-body">
-                  {imagePreview && <img src={imagePreview} alt="Preview" />}
-                  {fullName && <p>{fullName} </p>}
-                  {selectedFileName && <p>{selectedFileName}</p>}
-                  {imageSize && <p>Image size : {imageSize.toFixed(2)} MB</p>}
+    setSelectedFileName(file.name);
+    const reader = new FileReader();
+    reader.onload = () => {
+      setImagePreview(reader.result);
+      setImageSize(file.size / 1024);
+    };
+    reader.readAsDataURL(file);
+    setFullName(`${selectedRow.row.fname} ${selectedRow.row.surname}`);
+  }
+  return (
+    <>
+      <div className="picture">
+        <label>Choose a picture:</label> <br></br>
+        <input type="file" ref={fileInputRef} id="picture" name="picture" onChange={(e) => handleSelectedFile(e)} />
+        <br></br>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#example">
+          Submit
+        </button>
+        <div class="modal" id="example" >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Image Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+              </div>
+              <div class="modal-body">
+                {imagePreview && <img src={imagePreview} alt="Preview" />}
+                {fullName && <p>{fullName} </p>}
+                {selectedFileName && <p>{selectedFileName}</p>}
+                {imageSize && <p>Image size : {imageSize.toFixed(2)} MB</p>}
 
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick={handleClose}>Close</button>
-                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick={handleClose}>Close</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div style={formStyles}>
-          <Form
-            schema={schema}
-            uiSchema={uiSchema}
-            disabled={true}
-            validator={validator}
-          >
-            <></>
-            <input type='button' onClick={handleSubmit} value='Submit' style={button} className=' btn btn-primary btn-lg'></input></Form>
-        </div>
-      </>
-    );
-  }
+      <div className="formStyles">
+        <Form
 
-  if (selectedRow.row.status === 'CLOSED') {
-    return (
-      <>
-        <div style={formStyles}>
-          <Form
-            schema={schema}
-            uiSchema={uiSchema}
-            disabled={true}
-            validator={validator}
-          ><></></Form>
-        </div></>
-    );
-  }
+          schema={schema}
+          formData={selectedRow.row}
+          onSubmit={handleSubmit}
+          disabled={selectedRow.row.status === 'CLOSED'}
+          validator={validator}
+        >
+          <></>
+          <button type='submit' value='Submit' className='btn btn-primary btn-lg'>Submit</button>
+        </Form>
+
+      </div>
+    </>
+  );
 
 }

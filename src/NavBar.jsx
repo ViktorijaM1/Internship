@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import './style.css';
 
 export default function NavBar({ onDataClick, onHomeClick, onExcelClick, onCsvClick, onJsonClick, clicked }) {
 
@@ -10,7 +11,6 @@ export default function NavBar({ onDataClick, onHomeClick, onExcelClick, onCsvCl
   }, [clicked]);
 
   const handleDataClick = () => {
-    
     setShowButtons(!showButtons);
     onDataClick();
 
@@ -28,7 +28,7 @@ export default function NavBar({ onDataClick, onHomeClick, onExcelClick, onCsvCl
               <Link to={`/data`} className="btn btn-light" aria-current="page" onClick={handleDataClick}>Data</Link>
             </li>
             {clicked && showButtons && (
-              <div style={{ position: 'absolute', right: '50px', marginTop: '10px' }}>
+              <div className='divButtons'>
                 <button className="btn btn-sm btn-light" style={{ marginRight: '10px' }} onClick={onCsvClick}>Download CSV</button>
                 <button className="btn btn-sm btn-light" style={{ marginRight: '10px' }} onClick={onExcelClick}>Download Excel</button>
                 <button className="btn btn-sm btn-light" onClick={onJsonClick}>Download Json</button>

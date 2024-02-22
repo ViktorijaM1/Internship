@@ -1,11 +1,46 @@
 #root {
-  
     display: grid;
-    width: 100vw; /* Use the full viewport width */
+    width: 100vw;
     height: auto;
     grid-template-columns: 33% 33%;
     grid-column-gap: 30px;
-    align-items: center; /* Align items vertically */
+    align-items: center;
 }
 
+.formStyles {
+    position: fixed;
+    top: 200px;
+    left: 250px;
+    width: 50%;
+    padding: 20px;
+}
 
+.btn-primary {
+    position: absolute;
+    margin: '40px auto';
+    margin-top: 30px;
+    left: 600px;
+
+}
+
+.picture {
+    position: relative;
+    width: 500px;
+    top: 30px;
+    left: 1400px;
+}
+
+.btn-secondary {
+
+    position: relative;
+    top: 10px;
+    background-color: navy
+}
+
+.divButtons {
+
+    position: absolute;
+    right: 50px;
+    margin-top: 10px;
+
+}
